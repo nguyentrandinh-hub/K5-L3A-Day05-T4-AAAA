@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Prototype · T4 Thương mại điện tử · Nhóm AAAA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="layout">
+    <!-- =================================================================
+         LEFT COLUMN: STICKY FULL-HEIGHT IPHONE (SCROLLS INTERNALLY)
+         ================================================================= -->
+    <aside class="phone-col">
+      <div class="phone" id="phone">
+        <!-- Fixed Phone Top -->
+        <div class="phone-top">
+          <div class="notch" aria-hidden="true">
+            <span class="camera-dot"></span>
+          </div>
+          <div class="status-bar">
+            <span class="status-time">15:32</span>
+            <span class="status-title">Trò chuyện với Shopee · AI</span>
+            <span class="status-icons" aria-hidden="true">
+              <svg viewBox="0 0 16 16"><path d="M1 11h2v3H1v-3zm4-3h2v6H5V8zm4-3h2v9H9V5zm4-3h2v12h-2V2z"/></svg>
+              <svg viewBox="0 0 20 12"><rect x="1" y="1" width="15" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><rect x="3" y="3" width="11" height="6" rx="1"/><path d="M18 4v4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+            </span>
+          </div>
+
+          <!-- Role Switcher Inside Phone (Bonus Track 4: Buyer vs Seller View) -->
+          <div class="role-switch" id="role-switch">
+            <button type="button" class="role-btn on" data-role="buyer">
+              <svg class="ic" viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              <span>Phía Người mua</span>
+            </button>
+            <button type="button" class="role-btn" data-role="seller">
+              <svg class="ic" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+              <span>Phía Người bán (Bonus)</span>
+            </button>
+          </div>
+
+          <!-- Order Strip Fixed Below Header -->
+          <div class="order-strip" id="order-strip"></div>
+        </div>
+
+        <!-- Scrollable Chat Stream Inside Phone -->
+        <div class="chat" id="chat" aria-live="polite"></div>
+
+        <!-- Fixed Phone Bottom Composer -->
+        <div class="phone-bottom">
+          <div class="quick-prompts">
+            <button type="button" class="qp-chip" id="btn-run-live-ai" title="Gửi tình huống hiện tại sang OpenRouter gpt-4o-mini">
+              <svg class="ic" viewBox="0 0 24 24"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              <span>Phân tích bằng AI thật</span>
+            </button>
+            <button type="button" class="qp-chip" id="btn-test-oos" title="Kiểm tra lớp bảo vệ chặn câu hỏi ngoài bài Lab">
+              <svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/></svg>
+              <span>Thử hỏi ngoài phạm vi Lab</span>
+            </button>
+          </div>
+          <form class="chat-input-bar" id="chat-form">
+            <input type="text" id="custom-input" placeholder="Nhập tin nhắn khiếu nại hoặc câu hỏi bất kỳ..." autocomplete="off">
+            <button type="submit" id="send-btn" aria-label="Gửi tin nhắn">
+              <svg class="ic" viewBox="0 0 24 24"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+              <span>Gửi AI</span>
+            </button>
+          </form>
+          <div class="home-indicator" aria-hidden="true"></div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- =================================================================
+         RIGHT COLUMN: CONTROLS, LIVE AI LOG (+3 BONUS), 5 TOOLS & HAX/PAIR
+         ================================================================= -->
+    <section class="content-col">
+      <!-- Header & Controls Card -->
+      <header class="control-header">
+        <div class="header-top">
+          <div>
+            <h1>Prototype · T4 Thương mại điện tử — Trợ lý Khiếu nại Shopee</h1>
+            <p class="sub">
+              Nhóm AAAA · Đồng bộ <code>spec.md</code> (§1–§7) · Tích hợp OpenRouter <code>openai/gpt-4o-mini</code> + 5 Tool Calling + Guardrail chặn ngoài phạm vi.
+            </p>
+          </div>
+          <label class="ann-check">
+            <input type="checkbox" id="ann" checked>
+            <span>Hiện số HAX/PAIR (1–6)</span>
+          </label>
+        </div>
+
+        <div class="controls-stack">
+          <div class="toggle" id="case-toggle">
+            <span class="toggle-label">Kịch bản (§3 &amp; §4.5):</span>
+            <button type="button" data-c="kb2" class="on">
+              <svg class="ic" viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+              <span>Kịch bản #2 (Đắt nhất 1: Shop nhắn check đơn)</span>
+            </button>
+            <button type="button" data-c="kb7">
+              <svg class="ic" viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              <span>Kịch bản #7 (Đắt nhất 2: Đòi SĐT &amp; doạ bóc phốt)</span>
+            </button>
+            <button type="button" data-c="kb1">
+              <span>Kịch bản #1 (Thiếu snapshot 6L/5L)</span>
+            </button>
+            <button type="button" data-c="normal">
+              <span>Ca thường (Sai màu)</span>
+            </button>
+          </div>
+
+          <div class="toggle" id="level-toggle">
+            <span class="toggle-label">Mức tự chủ (§4):</span>
+            <button type="button" data-l="1">I. Thụ động (Tất cả chờ duyệt)</button>
+            <button type="button" data-l="2" class="on">II. Chuẩn thiết kế Nhóm chọn (§4.1)</button>
+            <button type="button" data-l="3">III. Quá tay (AI tự hoàn tiền / tự phạt)</button>
+          </div>
+        </div>
+      </header>
+
+      <!-- PANEL BONUS: LIVE AI CALL & TOOL CALLING LOG (+3 ĐIỂM BONUS RUBRIC) -->
+      <div class="panel log-panel">
+        <div class="panel-head">
+          <div class="panel-title-group">
+            <svg class="ic" viewBox="0 0 24 24"><polyline points="4 17 10 11 4 5"/><line x1="12" y1="19" x2="20" y2="19"/></svg>
+            <h2>Live AI Decision &amp; Tool Calling Log (Bằng chứng +3đ Bonus Rubric)</h2>
+          </div>
+          <span class="api-status" id="api-status-badge">Đang kiểm tra .env...</span>
+        </div>
+        <div class="log-box" id="ai-log-box">
+          <div class="log-row">
+            <span class="log-key">Model &amp; Nguồn key:</span>
+            <code id="log-model">openai/gpt-4o-mini (Đọc từ file .env, không lộ key trong code)</code>
+          </div>
+          <div class="log-row">
+            <span class="log-key">Đối chiếu Snapshot:</span>
+            <span id="log-snapshot">Đơn #XYZ-02: Snapshot lúc mua [Size L] vs Khách báo [Size M] · Shop nhắn ["để shop check lại đơn nhầm"]</span>
+          </div>
+          <div class="log-row">
+            <span class="log-key">Tool AI gọi / đề xuất:</span>
+            <code id="log-tool">yeu_cau_bang_chung (target="both", requested_items="Ảnh tem size áo, mã vận đơn & phản hồi của shop")</code>
+          </div>
+          <div class="log-row">
+            <span class="log-key">Quyết định Guardrail:</span>
+            <span class="log-guardrail" id="log-guardrail">CHO PHÉP TỰ LÀM (yeu_cau_bang_chung) · KHÓA soan_hoan_tien (tách thành soan_de_xuat_hoan chờ Nhân viên duyệt)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- PANEL 1: LỜI HỨA VỚI NGƯỜI DÙNG (§4.7) & LẬP LUẬN CHỌN/LOẠI -->
+      <div class="panel">
+        <div class="panel-title-group">
+          <svg class="ic" viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <h2>1. Lời hứa với người dùng thay đổi thế nào (§4.7) &amp; Lý do chọn / loại</h2>
+        </div>
+        <div class="promise" id="promise"></div>
+      </div>
+
+      <!-- PANEL 2: BẢNG 5 TOOL TRACK 4 (§4.1 & §4.6) -->
+      <div class="panel">
+        <div class="panel-title-group">
+          <svg class="ic" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="21" x2="9" y2="9"/></svg>
+          <h2>2. Phân quyền 5 Tool Track 4 &amp; Đề xuất tách bước (§4.1, §4.4, §4.6)</h2>
+        </div>
+        <table>
+          <thead>
+            <tr>
+              <th>Tool</th>
+              <th>Mức tự chủ</th>
+              <th>Cost of Error — Thiệt hại khi sai &amp; Cơ chế kiểm soát</th>
+            </tr>
+          </thead>
+          <tbody id="tools"></tbody>
+        </table>
+      </div>
+
+      <!-- PANEL 3: CHÚ THÍCH HAX / PAIR TRÊN MÀN HÌNH IPHONE -->
+      <div class="panel">
+        <div class="panel-title-group">
+          <svg class="ic" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+          <h2>3. Chú thích: Nguyên tắc HAX / PAIR nào nằm ở đâu trên màn hình iPhone</h2>
+        </div>
+        <ul class="ann-list" id="ann-list"></ul>
+      </div>
+    </section>
+  </div>
+
+  <!-- MODAL FOR EVIDENCE UPLOAD / HUMAN APPROVAL -->
+  <div class="modal" id="modal">
+    <div class="modal-card" id="modal-content"></div>
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
