@@ -23,10 +23,10 @@ Trong **Trò chuyện với Shopee**, khi **người mua** đang báo "hàng nh�
 ## §2. Kịch bản rủi ro (Chặng 2)
 
 > **Cơ cấu phân chia kịch bản của nhóm (Tổng 9 kịch bản):**
-> - Lớp ① Bịa / Thiếu nguồn sự thật: 3 kịch bản *(thành viên khác đảm nhận)*
-> - Lớp ② Mơ hồ / Thiếu thông tin: 3 kịch bản *(thành viên khác đảm nhận)*
-> - Lớp ③ Đòi hỏi vượt thẩm quyền: 2 kịch bản *(phần đảm nhận dưới đây)*
-> - Lớp ④ Tác hại tức thì / Mất tiền, mất niềm tin ngay: 1 kịch bản *(phần đảm nhận dưới đây)*
+> - Lớp ① Bịa / Thiếu nguồn sự thật: 3 kịch bản 
+> - Lớp ② Mơ hồ / Thiếu thông tin: 3 kịch bản 
+> - Lớp ③ Đòi hỏi vượt thẩm quyền: 2 kịch bản 
+> - Lớp ④ Tác hại tức thì / Mất tiền, mất niềm tin ngay: 1 kịch bản 
 
 ### Chi tiết các kịch bản phụ trách (Lớp ③ và Lớp ④)
 
