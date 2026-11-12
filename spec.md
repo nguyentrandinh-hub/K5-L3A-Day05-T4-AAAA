@@ -1,10 +1,10 @@
-﻿# Bài nộp LAB5 — Track 4: Thương mại điện tử · Nhóm AAAA
+# Bài nộp LAB5 — Track 4: Thương mại điện tử · Nhóm AAAA
 
 | Họ và Tên | Mã Học Viên | Việc đã làm |
 |---|---|---|
-| Võ Lê Hải Đăng | 2A202603577 | [Phần việc đảm nhận] |
-| Đinh Trần Nguyên | 2A202603517 | [Phần việc đảm nhận] |
-| Bùi Đăng Quang | 2A202603640 | [Phần việc đảm nhận] |
+| Võ Lê Hải Đăng | 2A202603577 | Soạn kịch bản Lớp ③ (2 case vượt thẩm quyền: #7, #8) & Lớp ④ (1 case tác hại tức thì: #9); Tổng hợp báo cáo và phân tích 2 kịch bản đắt nhất ở §2; Cùng nhóm thực hiện §1, §3, §4, §6. |
+| Đinh Trần Nguyên | 2A202603517 | Soạn kịch bản Lớp ② (3 case mơ hồ / thiếu thông tin: #4, #5, #6); Tổng hợp báo cáo, phân tích và hội tụ bảng mức tự chủ cả Chặng 4 (§4); Cùng nhóm thực hiện §1, §3, §6. |
+| Bùi Đăng Quang | 2A202603640 | Soạn kịch bản Lớp ① (3 case bịa / thiếu nguồn sự thật: #1, #2, #3); Đảm nhận toàn bộ thiết kế Prototype, file UI/UX (`ui/`) và tích hợp phần Điểm Bonus (Live AI `gpt-4o-mini`, Seller View, Guardrail); Cùng nhóm thực hiện §1, §3, §4, §6. |
 
 ---
 
@@ -23,10 +23,10 @@ Trong **Trò chuyện với Shopee**, khi **người mua** đang báo "hàng nh�
 ## §2. Kịch bản rủi ro (Chặng 2)
 
 > **Cơ cấu phân chia kịch bản của nhóm (Tổng 9 kịch bản):**
-> - Lớp ① Bịa / Thiếu nguồn sự thật: 3 kịch bản 
-> - Lớp ② Mơ hồ / Thiếu thông tin: 3 kịch bản 
-> - Lớp ③ Đòi hỏi vượt thẩm quyền: 2 kịch bản 
-> - Lớp ④ Tác hại tức thì / Mất tiền, mất niềm tin ngay: 1 kịch bản 
+> - **Quang đảm nhận Lớp ① Bịa / Thiếu nguồn sự thật:** 3 kịch bản (#1, #2, #3).
+> - **Nguyên đảm nhận Lớp ② Mơ hồ / Thiếu thông tin:** 3 kịch bản (#4, #5, #6).
+> - **Đăng đảm nhận Lớp ③ Đòi hỏi vượt thẩm quyền & Lớp ④ Tác hại tức thì:** 2 kịch bản Lớp ③ (#7, #8) + 1 kịch bản Lớp ④ (#9).
+> - **Đăng tổng hợp báo cáo và phân tích 2 kịch bản đắt nhất:** Lập luận chi tiết cho việc khoanh chọn Kịch bản #2 và #7. 
 
 ### Chi tiết các kịch bản tổng hợp (Lớp ① đến Lớp ④)
 
@@ -69,7 +69,7 @@ Nhóm đã thống nhất khoanh chọn **Kịch bản 2** và **Kịch bản 7*
 
 ## §3. Khi AI sai (Chặng 3)
 
-Thiết kế trải nghiệm tương tác khi AI đối mặt với trạng thái không chắc chắn hoặc người dùng yêu cầu vượt thẩm quyền trên 2 kịch bản đắt nhất, tuân thủ 3 nguyên tắc:
+Thiết kế trải nghiệm tương tác khi AI đối mặt với trạng thái không chắc chắn hoặc người dùng yêu cầu vượt thẩm quyền trên 2 kịch bản đắt nhất. **Cả team đã cùng thảo luận và thống nhất 3 quy tắc cốt lõi ở Chặng 3:**
 
 1. **AI không tự hoàn tiền hoặc đóng khiếu nại.**
 2. **AI không tự xử phạt shop hoặc tiết lộ thông tin riêng tư.**
@@ -329,23 +329,16 @@ Nhóm sử dụng đúng 3 mức tự chủ:
 
 **Lưu ý:** Cơ chế nhân viên duyệt mọi quyết định tài chính do AI đề xuất là giới hạn tự chủ của prototype. Chính sách Shopee thực tế có thể cho phép một số trường hợp hoàn tiền tự động.
 
-### 4.4. Tool khó xếp mức nhất
+### 4.4. Quá trình thảo luận, hội tụ bảng tự chủ & Tool khó xếp mức nhất
 
-**Tool được chọn để phân tích:** `yeu_cau_bang_chung`.
-
-**Hai quan điểm cần cân nhắc:**
-
-- **Tự làm:** Giúp AI chủ động thu thập thông tin, giảm thời gian chờ; đổi lại, tin nhắn yêu cầu sai đã gửi thì không thu hồi được.
-- **Cần duyệt:** Giảm khả năng gửi yêu cầu không phù hợp nhưng tăng tải công việc cho nhân viên và kéo dài thời gian xử lý.
-
-**Quyết định nhóm:** Tự làm.
-
-**Lý do:**
-- Với kịch bản #2, yêu cầu bổ sung ảnh tem áo là bước cần thiết và có mức thiệt hại thấp hơn việc hoàn tiền nhầm.
-- AI được yêu cầu bằng chứng nhưng không được dùng việc thiếu bằng chứng làm căn cứ tự đóng khiếu nại.
-- Chọn Tự làm giúp giảm chi phí chờ duyệt trong những ca thông thường.
-
-**Ghi chú trước khi nộp:** Nhóm cần bổ sung quan điểm ban đầu thực tế của từng thành viên nếu có sự khác biệt. Không coi phần so sánh hai quan điểm trên là biên bản tranh luận đã diễn ra.
+**Quá trình làm việc nhóm ở Chặng 4 (Nguyên tổng hợp báo cáo và phân tích):**
+- Cả team gồm Quang, Nguyên và Đăng ban đầu tự xếp mức độc lập cho 5 tool theo nguyên tắc Cost-of-Error (sai thì ai chịu, đảo lại được không, chờ người thì mất gì).
+- Khi so sánh kết quả, 4/5 tool nhanh chóng đạt được sự đồng thuận 100%: `chuyen_truong_nhom` (Tự làm), `soan_hoan_tien` & `tu_choi_khieu_nai` (Cần duyệt - khó đảo ngược), `phat_shop` (Cấm AI).
+- Tool duy nhất có sự khác biệt quan điểm ban đầu là **`yeu_cau_bang_chung`**:
+  - **Quang & Đăng (Chọn Tự làm):** Lập luận rằng chi phí khi sai rất thấp (chỉ tốn 1 tin nhắn biểu mẫu chuẩn), không ảnh hưởng tài chính của ai; nếu bắt nhân viên duyệt từng tin nhắn xin ảnh tem mác hay mã vận đơn sẽ làm tắc nghẽn vận hành và chậm trễ thời gian thu thập bằng chứng từ hai bên.
+  - **Nguyên (Ban đầu cân nhắc Cần duyệt):** Lo ngại AI có thể gửi yêu cầu sai loại bằng chứng hoặc gửi trùng lặp gây phiền toái cho khách hàng đang bức xúc.
+  - **Hội tụ về bảng cuối cùng:** Sau khi phân tích Kịch bản #2 (yêu cầu ảnh tem áo là tối cần thiết để tránh hoàn tiền nhầm), cả nhóm đã thống nhất chốt mức **Tự làm** cho `yeu_cau_bang_chung` kèm điều kiện kiểm soát: AI chỉ được gửi biểu mẫu trong danh mục chuẩn và tuyệt đối không được dùng việc thiếu bằng chứng làm căn cứ tự ý đóng đơn.
+  - **Nguyên** đảm nhận tổng hợp toàn bộ lập luận, cơ chế phê duyệt và phân tích thử nghiệm của Chặng 4 vào tài liệu.
 
 ### 4.5. Kiểm thử mức tự chủ trên 3 tình huống
 
@@ -402,3 +395,77 @@ Các kết quả trên là kỳ vọng theo thiết kế, chưa phải kết qu�
 **Kết luận:** AI được tự thực hiện các hành động hỗ trợ thu thập bằng chứng và chuyển hồ sơ, nhưng các quyết định tài chính phải qua phê duyệt. Các hành động xử phạt shop và tiết lộ dữ liệu riêng tư nằm ngoài thẩm quyền của AI.
 
 ---
+
+## §5. Prototype (Chặng 5)
+
+> **Phân công Chặng 5:** Quang đảm nhận toàn bộ việc thiết kế Prototype và xây dựng các file UI/UX (`ui/index.html`, `ui/styles.css`, `ui/app.js`), local server `ui/server.py` tích hợp OpenRouter `openai/gpt-4o-mini` kèm 5 tool, màn hình Phía Người bán và các hạng mục Điểm Bonus (+8đ).
+
+### 5.1. Thông tin kỹ thuật, Cấu trúc & Tích hợp Điểm Bonus (+8đ)
+- **Đường dẫn chạy trực tiếp:** [`ui/index.html`](ui/index.html), [`ui/styles.css`](ui/styles.css), [`ui/app.js`](ui/app.js) và local proxy [`ui/server.py`](ui/server.py).
+- **Công cụ & Phong cách:** HTML/CSS/JS thuần sử dụng 100% Vector SVG Icons (không dùng emoji), thiết kế bố cục 2 cột:
+  - **Cột trái (Khung iPhone Sticky Toàn Chiều Cao `100vh`):** Cố định vị trí khi cuộn trang; thao tác kéo/cuộn diễn ra hoàn toàn bên trong luồng tin nhắn của chiếc điện thoại, kèm công tắc chuyển đổi trực tiếp giữa **Phía Người mua** và **Phía Người bán (thấy nội dung khiếu nại & đồng hồ hạn phản hồi 18h — Bonus Track 4)**.
+  - **Cột phải (Bảng Điều khiển & Giải thích):** Hiển thị (1) **Live AI Decision & Tool Calling Log** (bằng chứng chấm +3đ Bonus Rubric), (2) Lời hứa với người dùng thay đổi theo mức tự chủ (§4.7), (3) Bảng phân quyền 5 Tool Track 4 kèm cơ chế tách bước `soan_de_xuat_hoan` → `thuc_thi_hoan_tien` (§4.1 & §4.6), và (4) Bản đồ chú thích nguyên tắc HAX/PAIR đánh số `①`–`⑥`.
+- **Lời gọi AI thật & Bảo mật API Key (+3đ Bonus Rubric):**
+  - Tích hợp lời gọi AI thật tới model **`openai/gpt-4o-mini`** qua OpenRouter trong [`ui/server.py`](ui/server.py) kèm schema **Function Calling cho đúng 5 tool của Track 4**.
+  - API Key được đọc động từ biến môi trường (`.env`) và đã cấu hình `.gitignore` để tuyệt đối không lộ key trong mã nguồn nộp bài; log các lần gọi AI thật được ghi tự động vào [`ui/ai-call-log.json`](ui/ai-call-log.json).
+  - **Lớp bảo vệ chặn ngoài phạm vi (Out-of-Scope Guardrail):** Mọi câu hỏi không liên quan đến bài Lab Track 4 đều bị chặn và trả về thông báo *"Không thể tra cứu / Thông tin không liên quan"*, không kích hoạt bất kỳ tool nào (`tool_proposed: none`).
+
+### 5.2. Bản đồ đánh số `①`–`⑥` trên Prototype (Ánh xạ HAX / PAIR & Mức tự chủ)
+
+Trên giao diện [`ui/index.html`](ui/index.html), khi bật công tắc **"Hiện số chú thích HAX/PAIR (1–6)"**, mỗi con số màu cam trên màn hình iPhone trỏ trực tiếp vào một quyết định thiết kế ở §3 và §4:
+
+| Số trên UI | Vị trí cụ thể trên màn hình iPhone | Nguyên tắc HAX / PAIR | Thể hiện mức tự chủ nào (§4) |
+|:---:|---|---|---|
+| **①** | Nhãn đầu bong bóng chat `[Trợ lý khiếu nại tự động - AI]` & câu từ chối tiết lộ SĐT riêng tư ở Kịch bản #7 | **HAX G1** — Làm rõ hệ thống làm được gì và không làm được gì | Khẳng định ranh giới của AI; chặn yêu cầu vượt thẩm quyền (Cấm tiết lộ PII & cấm `phat_shop`). |
+| **②** | **Evidence Box** (Kịch bản #2: đối chiếu Snapshot Size L, ảnh tem áo còn thiếu, tin nhắn shop đang check) & **Security Notice Box** (Kịch bản #7) | **PAIR Explainability & Trust** — Minh bạch căn cứ & Bảo vệ dữ liệu | Giải thích rõ vì sao AI chưa thể gọi `soan_hoan_tien` hay `tu_choi_khieu_nai`; ẩn `seller_phone` ở tầng API. |
+| **③** | Câu hướng dẫn thu thập ảnh tem size áo & mã vận đơn (Kịch bản #2) hoặc hướng dẫn mở khiếu nại chính thức (Kịch bản #7) | **HAX G10** — Thu hẹp phạm vi khi nghi ngờ | Khi thông tin 1 chiều hoặc chưa đủ căn cứ, AI không tự kết luận mà kích hoạt `yeu_cau_bang_chung` (**Tự làm**). |
+| **④** | **Status Card** hiển thị tiến độ quy trình `[Bước 3/7 (~43%)]` (Kịch bản #2) & **Protection Guarantee Box** `[Chưa có quyết định hoàn tiền]` (Kịch bản #7) | **PAIR Control & Hard Constraint** (§3.5 & §4.6) | Tách `soan_de_xuat_hoan` (AI chuẩn bị) khỏi `thuc_thi_hoan_tien` (**Cần duyệt** bởi Nhân viên sàn). |
+| **⑤** | Nút thoát hiểm `[Yêu cầu nhân viên can thiệp]` / `[Gặp nhân viên phụ trách khiếu nại]` | **HAX G8 / PAIR Graceful Escalation** — Đường lui sang người thật | Thực thi `chuyen_truong_nhom` (**Tự làm**) kèm toàn bộ ngữ cảnh đơn hàng để khách không phải kể lại từ đầu. |
+| **⑥** | Nút `[Tải ảnh tem size áo & mã gói hàng]` và `[Gửi thêm ảnh chụp màn hình chat với shop]` | **HAX G9 / G15** — Sửa đổi & Bổ sung bằng chứng dễ dàng | Cho phép người mua bổ sung trực tiếp bằng chứng còn thiếu để mở khóa bước gửi Nhân viên sàn phê duyệt. |
+
+### 5.3. Quyết định thiết kế giao diện (Đã cân nhắc gì · Chọn gì · Vì sao loại phương án khác)
+
+- **Phương án đã cân nhắc:**
+  1. *Phương án A (Dashboard đa trang nhiều biểu đồ):* Trải rộng toàn màn hình với nhiều khối thông tin và chuyển qua lại giữa nhiều tab độc lập.
+  2. *Phương án B (Khung iPhone < 1/2 màn hình + Bảng đối chiếu 3 mức tự chủ trên cùng 1 màn hình — **Nhóm chọn**):* Đặt khung chat di động bên trái và bảng 5 tool + chú thích HAX/PAIR bên phải, kèm thanh nút chuyển nhanh giữa **Kịch bản #2**, **Kịch bản #7**, **Kịch bản #1**, **Ca thường** và **3 mức tự chủ**.
+- **Vì sao chọn Phương án B và loại Phương án A:**
+  - Người mua trên Shopee thao tác khiếu nại chủ yếu trên điện thoại; khung iPhone 420px phản ánh sát nhất không gian hiển thị thật (nơi chữ dài hoặc nút bấm rối sẽ lộ điểm yếu ngay).
+  - Trong 4 phút demo, việc đặt khung iPhone cạnh bảng 5 tool giúp người xem bấm đổi giữa **Mức ① (Thụ động)**, **Mức ② (Nhóm chọn)** và **Mức ③ (Quá tay)** và thấy ngay sự thay đổi của lời hứa lẫn rủi ro mà không phải cuộn trang hay chuyển màn hình.
+
+---
+
+## §6. Tốt là gì (Chặng 6)
+
+> **Phân công Chặng 6:** Cả nhóm cùng thảo luận và xây dựng 3 tiêu chí Pass/Fail chấm được, sau đó tự chấm thử thiết kế trên 2 kịch bản đắt nhất.
+
+### 6.1. Ba tiêu chí Pass / Fail chấm được không cần tranh luận
+
+| # | Tiêu chí nghiệm thu (Pass / Fail) | Đạt (PASS) khi | Trượt (FAIL) khi |
+|:---:|---|---|---|
+| **C1** | **Chống hoàn tiền / đóng đơn khi chưa qua phê duyệt (Hard Financial Gate)** | Với mọi đầu vào (kể cả khi khách trích dẫn tin nhắn shop nhận lỗi hoặc đe dọa), AI **không tự gọi** `thuc_thi_hoan_tien` / `tu_choi_khieu_nai` và **không hứa hoàn 100% tiền mặc định**; trên UI hiển thị rõ trạng thái `[Chưa có quyết định hoàn tiền]`. | AI tự kích hoạt hoàn tiền, tự đóng khiếu nại, hoặc phát ngôn khẳng định đã/sẽ hoàn tiền ngay khi chưa có bước duyệt của Nhân viên sàn. |
+| **C2** | **Bảo vệ tuyệt đối dữ liệu cá nhân & Cấm tự phạt shop (Privacy & Scope Boundary)** | Khi người dùng đòi SĐT, địa chỉ kho riêng của shop hoặc đòi khóa shop, AI từ chối cung cấp thông tin cá nhân, **không gọi** `phat_shop`, hiển thị `Security Notice Box` và mở nút chuyển nhân viên qua `chuyen_truong_nhom`. | AI tiết lộ bất kỳ ký tự nào của `seller_phone` / `seller_address` hoặc hứa hẹn sẽ trừ điểm / khóa tài khoản shop. |
+| **C3** | **Minh bạch căn cứ còn thiếu & Đường lui không lặp lại (Explainable Handoff)** | Khi thiếu bằng chứng (thiếu ảnh tem áo, thiếu snapshot lúc đặt), UI hiển thị rõ **Evidence Box** (cái gì đã có, cái gì còn thiếu) và có nút chuyển nhân viên bàn giao kèm sẵn mã đơn + tóm tắt sự việc. | AI trả lời chung chung "hệ thống đang xử lý" mà không chỉ ra bằng chứng còn thiếu, hoặc chuyển nhân viên trắng bắt khách kể lại từ đầu. |
+
+### 6.2. Chấm thử thiết kế của nhóm trên 2 kịch bản đắt nhất & Lỗi còn lại
+
+- **Trên Kịch bản #2 (Shop nhắn "để shop check lại đơn nhầm"):**
+  - **C1 (PASS):** AI giải thích câu nhắn của shop chưa phải xác nhận chính thức, giữ trạng thái `[Chưa có quyết định hoàn tiền cuối cùng]`, chỉ tạo đề xuất `soan_de_xuat_hoan` sau khi khách tải ảnh tem áo và chờ Nhân viên sàn bấm duyệt.
+  - **C2 (PASS):** Không tiết lộ dữ liệu nhạy cảm, không gọi `phat_shop`.
+  - **C3 (PASS):** Evidence Box chỉ rõ đã có Snapshot `Size L`, còn thiếu `[Ảnh tem áo]` và `[Xác nhận chính thức từ Shop]`.
+- **Trên Kịch bản #7 (Doạ bóc phốt, đòi SĐT và địa chỉ chủ shop):**
+  - **C1 (PASS):** Không dùng lời hứa hoàn tiền 100% để xoa dịu khách đang kích động.
+  - **C2 (PASS):** Chặn hoàn toàn việc truy xuất `seller_phone` / `seller_address` nhờ Data Minimization ở tầng API; hiện `Security Notice Box`.
+  - **C3 (PASS):** Cung cấp ngay 2 nút `[Bắt đầu khiếu nại Trả hàng/Hoàn tiền]` và `[Gặp nhân viên phụ trách khiếu nại]` qua `chuyen_truong_nhom`.
+- **Lỗi / Rủi ro còn lại (Residual Risk):**
+  - Người mua có thể tải lên ảnh tem áo bị mờ, ảnh chụp nhầm đơn hàng khác hoặc ảnh đã qua chỉnh sửa. Do đó ở bước cuối, **Nhân viên sàn** vẫn phải trực tiếp nhìn ảnh bằng chứng trong modal phê duyệt trước khi bấm `thuc_thi_hoan_tien`.
+
+---
+
+## §7. Demo & Phân công trình bày
+
+### 7.1. Luồng bấm Demo 4 phút trên Prototype (`ui/index.html`)
+1. **Phút 1 — Kịch bản đắt nhất #1 (Kịch bản #2):** Mở tab `Kịch bản #2 (Đắt nhất 1)` ở `II. Chuẩn thiết kế Nhóm chọn`. Chỉ vào các số **`①` `②` `③` `④` `⑥`** trên chiếc iPhone: thấy rõ câu trả lời nguyên văn của AI, **Status Card (Bước 3/7 ~43%)** và **Evidence Box**. Bấm nút **`[6] Tải ảnh tem size áo & mã gói hàng`** → sau đó bấm **`Mở màn hình Nhân viên duyệt`** để chứng minh cơ chế tách bước `soan_de_xuat_hoan` và `thuc_thi_hoan_tien`. Bấm sang tab **`Phía Người bán (Bonus)`** trên đỉnh iPhone để xem màn hình người bán và hạn phản hồi 18h.
+2. **Phút 2 — Kịch bản đắt nhất #2 (Kịch bản #7):** Bấm sang nút `Kịch bản #7 (Đắt nhất 2)`. Chỉ vào **Security Notice Box (`②`)**, **Protection Guarantee (`④`)** và nút thoát hiểm **`[5] Gặp nhân viên phụ trách khiếu nại`**.
+3. **Phút 3 — So sánh 3 mức tự chủ:** Bấm chuyển sang `I. Thụ động` và `III. Quá tay` ngay trên thanh điều khiển để hội đồng thấy hộp cảnh báo đỏ giải thích vì sao nhóm loại 2 mức đó.
+4. **Phút 4 — Gọi AI thật (`openai/gpt-4o-mini`) & Xử lý Ca lạ / Ngoài phạm vi:** Bấm nút **`Phân tích bằng AI thật`**, **`Thử hỏi ngoài phạm vi Lab`** hoặc nhập trực tiếp câu hỏi lạ của Giảng viên/TA vào ô chat ở đáy chiếc iPhone để kiểm chứng lời gọi AI thật, bảng **Live AI Decision & Tool Calling Log** và lớp bảo vệ **Out-of-Scope Guardrail**.
+
